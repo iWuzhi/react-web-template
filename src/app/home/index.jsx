@@ -7,6 +7,7 @@ import React from "react";
 // import imgModule from "../../assets/images/module.png";
 
 // import styles from "./index.css";
+import HooksTest from "./hooks/HooksTest.jsx";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <section>
         <h3>结构图</h3>
         {/* <img src={imgModule} alt="结构图" className={styles.img} /> */}
+        <HooksTest />
       </section>
     </section>
   );

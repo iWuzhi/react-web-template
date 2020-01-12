@@ -1,5 +1,6 @@
 extends: 
   - airbnb
+  - airbnb/hooks
   - prettier
 env:
   browser: true
@@ -23,3 +24,5 @@ rules:
   space-in-parens:
     - error
     - never
+  react/jsx-one-expression-per-line:
+    - off
