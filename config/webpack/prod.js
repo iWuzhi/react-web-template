@@ -1,34 +1,22 @@
 /**
- * Author iWuzhi
- * Date 2019/11/30
- **/
+ * author iWuzhi
+ * date 2020-05-12 10:52:45
+ */
 
-const merge = require("webpack-merge");
-const CompressionPlugin = require('compression-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const webpackMerge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const baseConfig = require("./base");
+const config = require('./config');
+const paths = require('../paths');
 
-module.exports = merge(baseConfig, {
-  mode: "production",
-  plugins: [
-    new CleanWebpackPlugin(),
-    new CompressionPlugin(),
-  ],
+module.exports = webpackMerge(config, {
+  mode: 'production',
   optimization: {
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true, // Must be set to true if using source-maps in production
-        terserOptions: {
-          // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-          extractComments: true,
-        }
-      }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-  }
-});
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+  ]
+})

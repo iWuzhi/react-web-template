@@ -1,26 +1,17 @@
 /**
- * Author iWuzhi
- * Date 2019/11/30
- **/
+ * author iWuzhi
+ * date 2020-05-12 10:52:45
+ */
 
-const path = require("path");
-const merge = require("webpack-merge");
-const webpack = require("webpack");
+const webpackMerge = require('webpack-merge');
 
-const paths = require("../paths");
+const config = require('./config');
+const paths = require('../paths');
 
-const baseConfig = require("./base");
-
-module.exports = merge(baseConfig, {
-  entry: ["react-hot-loader/patch"],
+module.exports = webpackMerge(config, {
+  mode: 'development',
   devtool: 'inline-source-map',
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   devServer: {
-    contentBase: paths.public,
-    port: 3000,
-    hot: true,
-    historyApiFallback: true,
-  },
-});
+    contentBase: paths.DIST
+  }
+})

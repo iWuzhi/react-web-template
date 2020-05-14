@@ -1,14 +1,22 @@
 /**
- * Author iWuzhi
- * Date 2019/11/30
- **/
+ * author iWuzhi
+ * date 2020-05-12 10:33:33
+ */
 
-const path = require("path");
-const rootPath = process.cwd();
+const path = require('path');
+
+const ROOT = process.cwd();
+
+function resolvePath(relPaths) {
+  return path.resolve(ROOT, relPaths);
+}
 
 module.exports = {
-  rootPath: rootPath,
-  config: path.join(rootPath, "config"),
-  public: path.join(rootPath, "public"),
-  src: path.join(rootPath, "src"),
+  ROOT: ROOT,
+  SRC: resolvePath('src/'),
+  CONFIG: resolvePath('config/'),
+  DIST: resolvePath('dist/'),
+  APP_ENTRY: resolvePath('src/index.tsx'),
+  PUBLIC: resolvePath('public'),
+  NODE_MODULES: resolvePath('node_modules'),
 }
